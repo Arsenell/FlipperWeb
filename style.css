@@ -1,0 +1,284 @@
+
+/* ==================  THEME  ================== */
+:root{
+  --green:#2E5E4E;          /* brand forest green */
+  --green-2:#2d584a;
+  --lime:#A5D84E;           /* accent */
+  --bg:#ffffff;
+  --ink:#ffffff;               /* main text */ /*browse category section*/
+  --muted:#6b6b6b;          /* secondary text */
+  --line:#E7E7E7;           /* borders */
+}
+/*"Browse by Category" */
+#cats{
+  color: var(--lime);          /* try var(--green) if you prefer */
+  font-weight: 800;
+  margin-left: 8px;
+  background-color: rgb(105, 141, 103); 
+  display: inline;
+  padding: 2px 6px;
+  margin-bottom: 16px; /* creates the gap below */
+}
+
+
+
+/* Make tile labels readable over images and distinct from the heading */
+.tile__label{
+  color: #fff;                                 /* label text white */
+  background: rgba(0,0,0,.45);                 /* darker chip for contrast */
+}
+
+/* Slightly stronger chip on hover/focus (you already have lift/anim) */
+.tiles .tile:hover .tile__label,
+.tiles .tile:focus-visible .tile__label{
+  background: rgba(0,0,0,.55);
+  
+}
+
+.tile__label{ transition: transform .18s ease, background .18s ease }
+.tiles .tile:hover .tile__label,
+.tiles .tile:focus-visible .tile__label{
+  transform: translateY(-2px);
+  background:#ffffff7e;
+}
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+
+/* ================== TOP BAR ================== */
+.topnav{
+  position:fixed; inset:0 0 auto 0; height:64px;
+  display:flex; align-items:center; gap:18px;
+  padding:0 20px; background:var(--green); color:#fff;
+  z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+.brand{
+  display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px;
+}
+.brand__logo{
+  width:34px; height:34px; border-radius:8px; background:#fff1; display:grid; place-items:center; font-weight:700;
+}
+.navlinks{display:flex; gap:18px}
+.navlinks a{opacity:.95; font-weight:600; padding:10px 8px; border-radius:6px}
+.navlinks a:hover{background:#fff2}
+.utilities{display:flex; align-items:center; gap:14px; margin-left:auto}
+
+/* Search */
+.search{
+  display:flex; align-items:center; background:#fff; border-radius:999px; overflow:hidden;
+  border:1px solid #0002;
+}
+.search input{
+  width:320px; padding:10px 14px; border:0; outline:0; font-size:14px;
+}
+.search button{
+  padding:12px 12px; border:0; background:var(--lime); color:var(--green-2); font-weight:700; cursor:pointer;
+}
+.search button:hover{filter:brightness(0.95)}
+.util-link{opacity:.95}
+.util-link:hover{opacity:1}
+
+/* Mobile nav */
+.burger{display:none}
+@media (max-width:900px){
+  .navlinks{display:none}
+  .search input{width:180px}
+  .burger{display:inline-flex; cursor:pointer}
+}
+
+/* Spacer to offset fixed bar */
+.spacer{height:64px}
+
+/* ==================  HERO  ================== */
+.hero{
+  position:relative; background:url('soil1.jpg') center/cover no-repeat; /* replace with your banner image */
+  min-height:46vh; display:grid; place-items:center; text-align:center; color:#fff;
+}
+.hero::before{
+  content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.55));
+}
+.hero__inner{position:relative; padding:60px 20px; max-width:920px}
+.kicker{letter-spacing:.18em; text-transform:uppercase; font-weight:700; color:#dff7e6}
+.hero h1{font-family:"Playfair Display",serif; font-size: clamp(28px,5vw,44px); margin:10px 0}
+.hero p{color:#f1f1f1; margin:0 0 18px}
+.cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+.btn{
+  appearance:none; border:0; cursor:pointer; font-weight:700; border-radius:10px; padding:12px 18px;
+}
+.btn--primary{background:var(--lime); color:var(--green-2)}
+.btn--ghost{background:transparent; color:#fff; border:2px solid #fff6}
+.btn--ghost:hover{border-color:#fff}
+
+/* ==================  CATEGORY TILES  ================== */
+:root{
+  --bg:#0f1a10;           /* page bg behind cards */
+  --card-bg:#0d150e;
+  --text:#0e1a10;
+  --white:#fff;
+  --muted:#6b7a6d;
+  --brand:#8fd460;        /* accent green */
+  --corner:18px;
+  --shadow:0 10px 24px rgba(0,0,0,.18), 0 4px 8px rgba(0,0,0,.12);
+}
+
+@media (prefers-color-scheme: dark){
+  :root{ --text:#e7f2e8; --muted:#99a79c; }
+}
+
+.categories{ padding:48px 0; background:linear-gradient(0deg,#f7fbf7, #fff); }
+@media (prefers-color-scheme: dark){
+  .categories{ background:linear-gradient(0deg,#0b120c,#0e170f); }
+}
+
+.container{ max-width:1100px; margin:auto; padding:0 20px; }
+
+.cat-head h2{
+  margin:0 0 6px; font-size: clamp(22px, 2.8vw, 32px); color:var(--text);
+}
+.cat-head .muted{ margin:0 0 20px; color:var(--muted); }
+
+.cat-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap:18px;
+}
+
+.cat-card{
+  position:relative; display:block; border-radius:var(--corner); overflow:hidden;
+  background:var(--card-bg); box-shadow:var(--shadow); isolation:isolate;
+  aspect-ratio:16/9; /* keeps all tiles the same height */
+  transform:translateZ(0);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.cat-card img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  transition:transform .45s ease;
+}
+
+.cat-card .overlay{
+  position:absolute; inset:auto 0 0 0; padding:16px; color:var(--white);
+  background: linear-gradient( to top, rgba(0,0,0,.55) 0%, rgba(0,0,0,.15) 70%, transparent 100%);
+  display:flex; flex-direction:column; gap:10px;
+}
+
+.cat-card .chip{
+  align-self:flex-start; font-size:12px; padding:6px 10px; border-radius:999px;
+  background:rgba(255,255,255,.18); backdrop-filter: blur(6px);
+  border:1px solid rgba(255,255,255,.35);
+}
+
+.cat-card h3{
+  margin:0; font-size: clamp(16px, 2vw, 20px); line-height:1.2; letter-spacing:.2px;
+  text-shadow: 0 2px 8px rgba(0,0,0,.4);
+}
+
+.cat-card .arrow{
+  margin-top:2px; opacity:.9; font-weight:700; transform:translateX(0);
+  transition:transform .25s ease;
+}
+
+/* Interactions */
+.cat-card:hover img{ transform:scale(1.06); }
+.cat-card:hover .arrow{ transform:translateX(4px); }
+.cat-card:focus-visible{
+  outline:3px solid var(--brand); outline-offset:3px;
+  box-shadow:0 0 0 6px rgba(143,212,96,.25), var(--shadow);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .cat-card img, .cat-card .arrow{ transition:none; }
+}
+
+
+/* ==================  PROMO / SALE STRIP  ================== */
+.banner{
+  background:var(--lime); color:var(--green-2); text-align:center; padding:12px; font-weight:800; letter-spacing:.3px;
+}
+/* ==================  STATS BANNER  ================== */
+.stats {
+  background: linear-gradient(0deg, #e9f6ee, #e9f6ee); /* soft light green */
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.stats__wrap {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
+  padding: 28px 0;
+  text-align: center;
+}
+
+.stat {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding: 10px 8px;
+}
+
+.stat__num {
+  font-weight: 800;
+  font-size: clamp(26px, 5vw, 42px);
+  line-height: 1.05;
+  color: var(--green);           /* big number colour */
+  letter-spacing: .3px;
+}
+
+.stat__label {
+  margin-top: 6px;
+  font-size: .95rem;
+  color: var(--green-2);
+  opacity: .9;
+}
+
+/* optional vertical dividers on large screens */
+@media (min-width: 900px){
+  .stat + .stat { border-left: 1px solid #00000010; }
+}
+
+/* responsive: 2x2 on tablets, 1x4 on phones */
+@media (max-width: 900px){ .stats__wrap{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 520px){ .stats__wrap{ grid-template-columns: 1fr; } }
+
+/* (Optional) subtle pop on hover/focus */
+.stat:focus-visible, .stat:hover { outline: none; }
+.stat:hover .stat__num { transform: translateY(-1px); }
+.stat__num { transition: transform .2s ease; }
+
+/* ==================  JOIN SECTION  ================== */
+.join-btn {
+  display: inline-block;
+  background: #8fd460; /* Green */
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.join-btn:hover {
+  background: #7bc24e; /* Slightly darker green */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+}
+
+/* ==================  FOOTER  ================== */
+.footer{
+  background:#0f1d18; color:#cfe6dc; margin-top:40px; padding:36px 0;
+}
+.footer__grid{
+  display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:20px;
+}
+.footer h4{margin:0 0 10px}
+.footer a{color:#cfe6dc; opacity:.9}
+.footer a:hover{opacity:1}
+.legal{border-top:1px solid #ffffff18; margin-top:20px; padding-top:16px; color:#a9c8bd; font-size:.9rem}
+@media (max-width:900px){ .footer__grid{grid-template-columns:1fr 1fr} }
+@media (max-width:560px){ .footer__grid{grid-template-columns:1fr} }
