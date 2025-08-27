@@ -354,6 +354,41 @@ body::before {
   opacity: .9;
 }
 
+/* ===== Scrolling Reviews ===== */
+.review-band {
+  overflow: hidden;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #ffffff00, #f2d6a200);
+  padding: 1rem 0;
+  position: relative;
+}
+
+.review-track {
+  display: inline-flex;
+  animation: scroll 30s linear infinite;
+}
+
+.review-card {
+  flex: 0 0 auto;
+  margin: 0 2rem;
+  padding: 1rem 2rem;
+  background: #24241e41;
+  border: 2px solid #24241e;
+  border-radius: 12px;
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  color: #333;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+  min-width: 250px;
+  min-height: 250px; /* makes it taller */
+  padding: 1.5rem;   /* adds more inside space */
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 
 /* ===== Footer ===== */
 footer {
@@ -466,3 +501,14 @@ footer {
     text-align: right;
   }
 }
+/* Rolling-band price ribbon (non-intrusive) */
+.rolling-item { position: relative; }
+.rb-ribbon{
+  position:absolute; left:-40px; right:-40px; text-align:center;
+  padding:8px 0; font-weight:800; font-size:15px; letter-spacing:.4px;
+  color:#fff; background:#ef4444; transform:rotate(-18deg);
+  border-top:2px solid rgba(255,255,255,.25);
+  border-bottom:2px solid rgba(0,0,0,.25);
+  pointer-events:none; /* ribbon won't block clicks */
+}
+.rb-ribbon--bottom{ bottom:26px; }
