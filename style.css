@@ -260,7 +260,11 @@ body::before {
   will-change: transform;
   animation: rb-scroll 22s linear infinite;
 }
-.rolling-item { flex: 0 0 auto; }
+.rolling-item { 
+  flex: 0 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+}
 .rolling-item img {
   display: block;
   width: 250px;
