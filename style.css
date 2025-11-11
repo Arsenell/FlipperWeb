@@ -264,7 +264,7 @@ body::before {
 .rolling-item img {
   display: block;
   width: 250px;
-  height: 320px;
+  height: auto;
   object-fit: contain;
   border-radius: 20px;
   transition: transform .3s ease;
